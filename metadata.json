@@ -1,0 +1,10 @@
+{
+  "name": "IESE - Inglés Militar Británico",
+  "description": "Plataforma integral de aprendizaje para los 6 niveles del programa oficial de inglés militar de la Escuela de Idiomas del Ejército (IESE), con comprensión auditiva, comprensión escrita, uso de la lengua, expresión escrita y expresión oral.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

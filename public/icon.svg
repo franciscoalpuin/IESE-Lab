@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="ea-bg-vignette" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#1a2514" />
+      <stop offset="70%" stopColor="#121a0d" />
+      <stop offset="100%" stopColor="#0a1007" />
+    </radialGradient>
+    <radialGradient id="ea-sun-gold" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#fae588" />
+      <stop offset="45%" stopColor="#e2c24e" />
+      <stop offset="85%" stopColor="#b5942b" />
+      <stop offset="100%" stopColor="#806416" />
+    </radialGradient>
+    <linearGradient id="ea-gold-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#f3de81" />
+      <stop offset="35%" stopColor="#cca73b" />
+      <stop offset="70%" stopColor="#876b1f" />
+      <stop offset="100%" stopColor="#e9cb56" />
+    </linearGradient>
+    <linearGradient id="ea-tactical-band" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#1d2a15" />
+      <stop offset="50%" stopColor="#29391e" />
+      <stop offset="100%" stopColor="#151e0f" />
+    </linearGradient>
+  </defs>
+  <circle cx="120" cy="120" r="118" fill="url(#ea-bg-vignette)" stroke="url(#ea-gold-rim)" stroke-width="3" />
+  <circle cx="120" cy="120" r="114" fill="none" stroke="#b8df47" stroke-width="1" stroke-opacity="0.7" />
+  <circle cx="120" cy="120" r="111" fill="url(#ea-tactical-band)" stroke="#3e5225" stroke-width="1.5" />
+  <circle cx="120" cy="120" r="80" fill="#141c0e" stroke="url(#ea-gold-rim)" stroke-width="2" />
+  <circle cx="120" cy="120" r="78" fill="#162010" />
+  <circle cx="120" cy="120" r="72" fill="none" stroke="#2a391a" stroke-width="0.8" />
+  <circle cx="120" cy="120" r="32" fill="url(#ea-sun-gold)" stroke="#745a19" stroke-width="1.5" />
+  <text x="120" y="48" fill="#b8df47" font-size="12" font-weight="900" text-anchor="middle" font-family="sans-serif">EJERCITO ARGENTINO</text>
+  <text x="120" y="202" fill="#e5efd3" font-size="8" font-weight="800" text-anchor="middle" font-family="sans-serif">IESE • INGLES MILITAR</text>
+  <polygon points="120,95 125,110 140,110 128,120 132,135 120,125 108,135 112,120 100,110 115,110" fill="#fae588" stroke="#876b1f" stroke-width="1" />
+</svg>

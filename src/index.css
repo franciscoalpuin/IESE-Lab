@@ -1,0 +1,1464 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Editorial Lab (Modelo Prolijo) Variables (Default) */
+    --bg-base: #f1f5f9;          /* Gris claro base */
+    --surface-base: #ffffff;     /* Superficie blanca/gris nítida */
+    --surface-elevated: #f1f5f9; /* Gris claro para cuadros y tarjetas */
+    
+    /* Dark Navy Header (matching reference image top bar) */
+    --header-bg: #0c1a2e;        /* Deep navy top bar */
+    --header-surface: #162b44;   /* Inactive nav tabs */
+    --header-text: #f8fafc;      /* Crisp white text in header */
+    
+    /* Crisp Academic & Technical Typography: Azul Oscuro */
+    --text-primary: #172554;     /* Azul oscuro profundo (blue-950) */
+    --text-secondary: #1e3a8a;   /* Azul oscuro estándar (blue-900) */
+    --text-muted: #1e40af;       /* Azul marino (blue-800) */
+    
+    /* Academic & Operational Blue Accents */
+    --accent-primary: #1e3a8a;   /* Azul oscuro acento */
+    --accent-hover: #172554;     /* Azul profundo */
+    --accent-active: #0f172a;    /* Azul medianoche */
+    --status-success: #059669;   /* Emerald 600 */
+    --border-subtle: #cbd5e1;    /* Borde gris claro slate-300 */
+    --border-card: #cbd5e1;      /* Borde cuadros gris claro */
+    --bg-overlay-rgb: 241, 245, 249;
+    --bg-overlay-opacity: 1.0;
+
+    /* Legacy compatibility tokens */
+    --titular-blue-dark: #0c1a2e;
+    --titular-blue-mid: #ffffff;
+    --titular-celeste: #f0f4f8;
+    --titular-pale: #0284c7;
+    --titular-white: #0f172a;
+    --camo-dark: var(--bg-base);
+    --camo-olive: var(--surface-base);
+    --camo-mid: var(--surface-elevated);
+    --camo-light: var(--border-subtle);
+    --stencil-lime: var(--accent-primary);
+    --stencil-highlight: var(--text-secondary);
+    --military-sand: var(--text-primary);
+  }
+
+  body {
+    background-color: var(--bg-base);
+    background-image: none;
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 11pt; /* Tamaño intermedio estándar para lectura óptima */
+    line-height: 1.6;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+
+  /* Sleek modern scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-base);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-elevated);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+  }
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA MODERNA & ESCALA STANAG (8pt mínima, 10-11pt intermedia, 12pt máxima)
+   ========================================================================== */
+
+/* Escala explícita solicitada: más chica 8pt, intermedias 10pt y 11pt, más grande 12pt */
+.text-size-8,
+.text-min-8,
+[class*="text-[6px]"],
+[class*="text-[7px]"],
+[class*="text-[8px]"],
+[class*="text-[9px]"],
+[class*="text-[8pt]"] {
+  font-size: 8pt !important;
+  line-height: 1.35 !important;
+}
+
+.text-size-10,
+.text-mid-10,
+.text-xs,
+[class*="text-[10px]"],
+[class*="text-[10pt]"] {
+  font-size: 10pt !important;
+  line-height: 1.4 !important;
+}
+
+.text-size-11,
+.text-mid-11,
+.text-sm,
+[class*="text-[11px]"],
+[class*="text-[11pt]"] {
+  font-size: 11pt !important;
+  line-height: 1.45 !important;
+}
+
+.text-size-12,
+.text-max-12,
+.text-base,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl,
+[class*="text-[12px]"],
+[class*="text-[12pt]"] {
+  font-size: 12pt !important;
+  line-height: 1.5 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+p,
+.font-desc,
+.descriptive-text,
+.doctrinal-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.text-reading,
+.reading-paragraph {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  max-width: 72ch;
+}
+
+ul:not(.font-stencil):not(.font-stencil-clean):not(.font-tactical):not(.font-mono) > li,
+ol:not(.font-stencil):not(.font-stencil-clean):not(.font-tactical):not(.font-mono) > li {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+.font-sans-reading {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Remap legacy stencil classes to modern, clean Plus Jakarta Sans / Inter */
+.font-stencil {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.font-stencil-clean {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif !important;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.font-tactical {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  letter-spacing: -0.02em;
+}
+
+.stencil-glow {
+  text-shadow: none !important;
+}
+
+.stencil-cutout {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Modern clean cards and containers */
+.tactical-stripe {
+  background-color: var(--surface-elevated);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.camo-card,
+.surface-card,
+.lab-card {
+  background-color: var(--surface-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.camo-card-elevated,
+.surface-card-elevated,
+.lab-card-elevated {
+  background-color: var(--surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+.font-editorial,
+.editorial-heading {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif !important;
+  letter-spacing: -0.015em;
+}
+
+.term-defined {
+  border-bottom: 1px dotted var(--text-muted);
+  cursor: help;
+}
+
+/* ==========================================================================
+   ESTÉTICA LIMPIA, SIN DESTELLOS NEÓN NI MANCHAS MUDDY
+   ========================================================================== */
+
+/* Supresión de efectos borrosos pesados */
+[class*="blur-3xl"],
+[class*="blur-2xl"],
+[class*="blur-xl"] {
+  display: none !important;
+}
+
+/* Fondos de modales opacos y limpios */
+.fixed.inset-0[class*="bg-black/"],
+[class*="bg-black/85"],
+[class*="bg-black/80"],
+[class*="bg-black/75"],
+[class*="bg-black/70"],
+[class*="bg-black/90"] {
+  background-color: rgba(9, 13, 22, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+
+/* ==========================================================================
+   DINÁMICA DE TEMAS TOTAL (SUPERFICIES, BORDES, CUADROS Y VENTANAS)
+   Asegura que cada cuadro, ventana modal y tarjeta adopte el tema seleccionado
+   ========================================================================== */
+
+/* 1. Neutralización de degradados verde oliva hacia la superficie del tema */
+[class*="from-[#0c1409]"],
+[class*="from-[#0e160a]"],
+[class*="from-[#141d0e]"],
+[class*="from-[#172210]"],
+[class*="from-[#172311]"],
+[class*="from-[#17240f]"],
+[class*="from-[#172412]"],
+[class*="from-[#172510]"],
+[class*="from-[#1b2611]"],
+[class*="from-[#1b2b11]"],
+[class*="from-[#223517]"],
+[class*="from-[#2a3c1a]"],
+[class*="from-[#3e5e20]"],
+[class*="from-[#4b7127]"],
+[class*="from-[#629723]"],
+[class*="from-[#172"],
+[class*="from-[#141"],
+[class*="from-[#213"],
+[class*="from-[#1a2"],
+[class*="from-[#243"] {
+  background-image: none !important;
+  background-color: var(--surface-base) !important;
+}
+
+/* 2. Degradados de acento hacia el color de acento del tema */
+[class*="from-[#6e8f2a]"],
+[class*="from-[#7ea330]"],
+[class*="from-[#8cb92f]"],
+[class*="from-[#9ec835]"],
+[class*="from-[#9ecc36]"],
+[class*="from-[#b8df47]"] {
+  background-image: none !important;
+  background-color: var(--accent-primary) !important;
+}
+
+/* 3. Superficies Base (Fondos profundos de ventanas y cuadros principales) */
+[class*="bg-[#06090e]"],
+[class*="bg-[#080d05]"],
+[class*="bg-[#090e06]"],
+[class*="bg-[#090f05]"],
+[class*="bg-[#0a0f06]"],
+[class*="bg-[#0a0f07]"],
+[class*="bg-[#0a1006]"],
+[class*="bg-[#0a1007]"],
+[class*="bg-[#0a1524]"],
+[class*="bg-[#0b1007]"],
+[class*="bg-[#0b1107]"],
+[class*="bg-[#0b1207]"],
+[class*="bg-[#0b1208]"],
+[class*="bg-[#0b1307]"],
+[class*="bg-[#0c1207]"],
+[class*="bg-[#0c1208]"],
+[class*="bg-[#0c1408]"],
+[class*="bg-[#0d1309]"],
+[class*="bg-[#0d1409]"],
+[class*="bg-[#0d1509]"],
+[class*="bg-[#0e140a]"],
+[class*="bg-[#0e1509]"],
+[class*="bg-[#0e150a]"],
+[class*="bg-[#0e160a]"],
+[class*="bg-[#0f160a]"],
+[class*="bg-[#0f170a]"],
+[class*="bg-[#0f170b]"],
+[class*="bg-[#10150b]"],
+[class*="bg-[#10160b]"],
+[class*="bg-[#10160c]"],
+[class*="bg-[#10170a]"],
+[class*="bg-[#10170b]"],
+[class*="bg-[#10170c]"],
+[class*="bg-[#102412]"],
+[class*="bg-[#11170b]"],
+[class*="bg-[#11180c]"],
+[class*="bg-[#11180d]"],
+[class*="bg-[#11190c]"],
+[class*="bg-[#111a0d]"],
+[class*="bg-[#111e22]"],
+[class*="bg-[#12180c]"],
+[class*="bg-[#12190c]"],
+[class*="bg-[#12190d]"],
+[class*="bg-[#12190e]"],
+[class*="bg-[#121a0c]"],
+[class*="bg-[#121a0d]"],
+[class*="bg-[#121b0d]"],
+[class*="bg-[#121c0b]"],
+[class*="bg-[#121c0c]"],
+[class*="bg-[#130e06]"],
+[class*="bg-[#131a0e]"],
+[class*="bg-[#131b0d]"],
+[class*="bg-[#131b0e]"],
+[class*="bg-[#131d0d]"],
+[class*="bg-[#131d0e]"],
+[class*="bg-[#132226]"],
+[class*="bg-[#141b0e]"],
+[class*="bg-[#141b10]"],
+[class*="bg-[#141c0e]"],
+[class*="bg-[#141d0e]"],
+[class*="bg-[#141d0f]"],
+[class*="bg-[#141d10]"],
+[class*="bg-[#141e0f]"],
+[class*="bg-[#141f0e]"],
+[class*="bg-[#151d0f]"],
+[class*="bg-[#151e0f]"],
+[class*="bg-[#151e10]"],
+[class*="bg-[#151f0f]"],
+[class*="bg-[#151f10]"],
+[class*="bg-[#151f11]"],
+[class*="bg-[#15200e]"],
+[class*="bg-[#152010]"],
+[class*="bg-[#15210e]"],
+[class*="bg-[#16200f]"],
+[class*="bg-[#162010]"],
+[class*="bg-[#162011]"],
+[class*="bg-[#162110]"],
+[class*="bg-[#162111]"],
+[class*="bg-[#16220f]"],
+[class*="bg-[#172010]"],
+[class*="bg-[#172011]"],
+[class*="bg-[#172110]"],
+[class*="bg-[#172111]"],
+[class*="bg-[#172210]"],
+[class*="bg-[#172212]"],
+[class*="bg-[#172312]"],
+[class*="bg-[#17240f]"],
+[class*="bg-[#182210]"],
+[class*="bg-[#182212]"],
+[class*="bg-[#182310]"],
+[class*="bg-[#182312]"],
+[class*="bg-[#192311]"],
+[class*="bg-[#1d140e]"],
+[class*="bg-[#1e1509]"],
+[class*="bg-[#1e1713]"],
+[class*="bg-[#1f150a]"],
+[class*="bg-[#271414]"],
+[class*="bg-[#291414]"],
+[class*="bg-[#291710]"],
+[class*="bg-[#2a1313]"],
+[class*="bg-[#2b1616]"],
+[class*="bg-[#2e1717]"] {
+  background-color: var(--surface-base) !important;
+}
+
+/* 4. Superficies Elevadas (Cuadros internos, tarjetas, paneles secundarios) */
+[class*="bg-[#132612]"],
+[class*="bg-[#142612]"],
+[class*="bg-[#172510]"],
+[class*="bg-[#182410]"],
+[class*="bg-[#182411]"],
+[class*="bg-[#182412]"],
+[class*="bg-[#182511]"],
+[class*="bg-[#182611]"],
+[class*="bg-[#182811]"],
+[class*="bg-[#192411]"],
+[class*="bg-[#192412]"],
+[class*="bg-[#192413]"],
+[class*="bg-[#192414]"],
+[class*="bg-[#1a2412]"],
+[class*="bg-[#1a2413]"],
+[class*="bg-[#1a2511]"],
+[class*="bg-[#1a2512]"],
+[class*="bg-[#1a2513]"],
+[class*="bg-[#1a2514]"],
+[class*="bg-[#1a2612]"],
+[class*="bg-[#1a2613]"],
+[class*="bg-[#1a2614]"],
+[class*="bg-[#1a2712]"],
+[class*="bg-[#1a2713]"],
+[class*="bg-[#1a2813]"],
+[class*="bg-[#1a3036]"],
+[class*="bg-[#1b2512]"],
+[class*="bg-[#1b2513]"],
+[class*="bg-[#1b2515]"],
+[class*="bg-[#1b2611]"],
+[class*="bg-[#1b2612]"],
+[class*="bg-[#1b2613]"],
+[class*="bg-[#1b2614]"],
+[class*="bg-[#1b2712]"],
+[class*="bg-[#1b2713]"],
+[class*="bg-[#1b2714]"],
+[class*="bg-[#1b2811]"],
+[class*="bg-[#1b2b13]"],
+[class*="bg-[#1b2e11]"],
+[class*="bg-[#1b2f33]"],
+[class*="bg-[#1b3513]"],
+[class*="bg-[#1b3d16]"],
+[class*="bg-[#1c221a]"],
+[class*="bg-[#1c2614]"],
+[class*="bg-[#1c2714]"],
+[class*="bg-[#1c2715]"],
+[class*="bg-[#1c2912]"],
+[class*="bg-[#1c2913]"],
+[class*="bg-[#1c2914]"],
+[class*="bg-[#1c2a15]"],
+[class*="bg-[#1d2714]"],
+[class*="bg-[#1d2913]"],
+[class*="bg-[#1d2915]"],
+[class*="bg-[#1d2916]"],
+[class*="bg-[#1d2a13]"],
+[class*="bg-[#1d2b15]"],
+[class*="bg-[#1e2a14]"],
+[class*="bg-[#1e2a16]"],
+[class*="bg-[#1e2a17]"],
+[class*="bg-[#1e2c14]"],
+[class*="bg-[#1e2d12]"],
+[class*="bg-[#1e2e13]"],
+[class*="bg-[#1e2f17]"],
+[class*="bg-[#1f2a15]"],
+[class*="bg-[#1f2b15]"],
+[class*="bg-[#1f2c14]"],
+[class*="bg-[#1f2d15]"],
+[class*="bg-[#1f2e13]"],
+[class*="bg-[#1f2f13]"],
+[class*="bg-[#202919]"],
+[class*="bg-[#202c14]"],
+[class*="bg-[#202c16]"],
+[class*="bg-[#202c17]"],
+[class*="bg-[#202d15]"],
+[class*="bg-[#202d16]"],
+[class*="bg-[#202d17]"],
+[class*="bg-[#202d18]"],
+[class*="bg-[#202e15]"],
+[class*="bg-[#202e16]"],
+[class*="bg-[#202e17]"],
+[class*="bg-[#202f14]"],
+[class*="bg-[#202f18]"],
+[class*="bg-[#203115]"],
+[class*="bg-[#203215]"],
+[class*="bg-[#20343a]"],
+[class*="bg-[#212b17]"],
+[class*="bg-[#212f17]"],
+[class*="bg-[#213115]"],
+[class*="bg-[#213516]"],
+[class*="bg-[#213813]"],
+[class*="bg-[#223016]"],
+[class*="bg-[#223017]"],
+[class*="bg-[#223018]"],
+[class*="bg-[#223115]"],
+[class*="bg-[#223117]"],
+[class*="bg-[#223119]"],
+[class*="bg-[#223314]"],
+[class*="bg-[#223315]"],
+[class*="bg-[#223318]"],
+[class*="bg-[#223319]"],
+[class*="bg-[#223414]"],
+[class*="bg-[#223514]"],
+[class*="bg-[#223516]"],
+[class*="bg-[#223614]"],
+[class*="bg-[#233116]"],
+[class*="bg-[#233118]"],
+[class*="bg-[#233119]"],
+[class*="bg-[#23311a]"],
+[class*="bg-[#233316]"],
+[class*="bg-[#233318]"],
+[class*="bg-[#233319]"],
+[class*="bg-[#23331b]"],
+[class*="bg-[#233514]"],
+[class*="bg-[#242b1b]"],
+[class*="bg-[#243317]"],
+[class*="bg-[#243318]"],
+[class*="bg-[#24331a]"],
+[class*="bg-[#243415]"],
+[class*="bg-[#243417]"],
+[class*="bg-[#243516]"],
+[class*="bg-[#243714]"],
+[class*="bg-[#243717]"],
+[class*="bg-[#25331b]"],
+[class*="bg-[#253517]"],
+[class*="bg-[#253518]"],
+[class*="bg-[#253519]"],
+[class*="bg-[#25351a]"],
+[class*="bg-[#25351c]"],
+[class*="bg-[#253617]"],
+[class*="bg-[#25361b]"],
+[class*="bg-[#253716]"],
+[class*="bg-[#253719]"],
+[class*="bg-[#253816]"],
+[class*="bg-[#253916]"],
+[class*="bg-[#25391a]"],
+[class*="bg-[#253a1a]"],
+[class*="bg-[#253d16]"],
+[class*="bg-[#263717]"],
+[class*="bg-[#264b1b]"],
+[class*="bg-[#273817]"],
+[class*="bg-[#273819]"],
+[class*="bg-[#27381a]"],
+[class*="bg-[#27381b]"],
+[class*="bg-[#273917]"],
+[class*="bg-[#273919]"],
+[class*="bg-[#273d15]"],
+[class*="bg-[#273d17]"],
+[class*="bg-[#273d18]"],
+[class*="bg-[#273f16]"],
+[class*="bg-[#28361c]"],
+[class*="bg-[#28371a]"],
+[class*="bg-[#28381b]"],
+[class*="bg-[#28381c]"],
+[class*="bg-[#283918]"],
+[class*="bg-[#28391d]"],
+[class*="bg-[#283b18]"],
+[class*="bg-[#283b19]"],
+[class*="bg-[#283b1a]"],
+[class*="bg-[#283c18]"],
+[class*="bg-[#283d16]"],
+[class*="bg-[#283e18]"],
+[class*="bg-[#291f0c]"],
+[class*="bg-[#29381c]"],
+[class*="bg-[#29391d]"],
+[class*="bg-[#293a1c]"],
+[class*="bg-[#293b1a]"],
+[class*="bg-[#293c1a]"],
+[class*="bg-[#293c1b]"],
+[class*="bg-[#293d18]"],
+[class*="bg-[#293d19]"],
+[class*="bg-[#2a3a1b]"],
+[class*="bg-[#2a3c1c]"],
+[class*="bg-[#2a3d1c]"],
+[class*="bg-[#2a3e1b]"],
+[class*="bg-[#2a431b]"],
+[class*="bg-[#2b2512]"],
+[class*="bg-[#2b3a1a]"],
+[class*="bg-[#2b3a1d]"],
+[class*="bg-[#2b3c1b]"],
+[class*="bg-[#2b3c1c]"],
+[class*="bg-[#2b3c1d]"],
+[class*="bg-[#2b3c1e]"],
+[class*="bg-[#2b3d19]"],
+[class*="bg-[#2b3d1b]"],
+[class*="bg-[#2b3d1c]"],
+[class*="bg-[#2b3e18]"],
+[class*="bg-[#2b3e1a]"],
+[class*="bg-[#2b3e1b]"],
+[class*="bg-[#2b3e1c]"],
+[class*="bg-[#2b3e1d]"],
+[class*="bg-[#2b4017]"],
+[class*="bg-[#2b411a]"],
+[class*="bg-[#2c3d1b]"],
+[class*="bg-[#2c3f1f]"],
+[class*="bg-[#2c431d]"],
+[class*="bg-[#2d3e1d]"],
+[class*="bg-[#2d4020]"],
+[class*="bg-[#2d441c]"],
+[class*="bg-[#2e382b]"],
+[class*="bg-[#2e411b]"],
+[class*="bg-[#2e4121]"],
+[class*="bg-[#2e4219]"],
+[class*="bg-[#2e421d]"],
+[class*="bg-[#2e4719]"],
+[class*="bg-[#2f461e]"],
+[class*="bg-[#30441d]"],
+[class*="bg-[#304421]"],
+[class*="bg-[#30451e]"],
+[class*="bg-[#30451f]"],
+[class*="bg-[#314620]"],
+[class*="bg-[#31481e]"],
+[class*="bg-[#314a1e]"],
+[class*="bg-[#32451f]"],
+[class*="bg-[#324724]"],
+[class*="bg-[#32491d]"],
+[class*="bg-[#324920]"],
+[class*="bg-[#324b1a]"],
+[class*="bg-[#324b1f]"],
+[class*="bg-[#32521c]"],
+[class*="bg-[#331e0a]"],
+[class*="bg-[#333116]"],
+[class*="bg-[#344a22]"],
+[class*="bg-[#344a23]"],
+[class*="bg-[#344b21]"],
+[class*="bg-[#344b22]"],
+[class*="bg-[#344d1f]"],
+[class*="bg-[#344d21]"],
+[class*="bg-[#344e1e]"],
+[class*="bg-[#344e21]"],
+[class*="bg-[#34511f]"],
+[class*="bg-[#351919]"],
+[class*="bg-[#354823]"],
+[class*="bg-[#355420]"],
+[class*="bg-[#35571e]"],
+[class*="bg-[#361f18]"],
+[class*="bg-[#364d24]"],
+[class*="bg-[#374f20]"],
+[class*="bg-[#38220c]"],
+[class*="bg-[#384f23]"],
+[class*="bg-[#385124]"],
+[class*="bg-[#394f24]"],
+[class*="bg-[#395024]"],
+[class*="bg-[#395225]"],
+[class*="bg-[#395325]"],
+[class*="bg-[#3b1717]"],
+[class*="bg-[#3b5124]"],
+[class*="bg-[#3b5422]"],
+[class*="bg-[#3d1a1a]"],
+[class*="bg-[#3d290b]"],
+[class*="bg-[#3d5626]"],
+[class*="bg-[#3d5629]"],
+[class*="bg-[#3d5721]"],
+[class*="bg-[#3f5724]"],
+[class*="bg-[#3f5a27]"],
+[class*="bg-[#435e23]"],
+[class*="bg-[#436423]"],
+[class*="bg-[#4b6131]"],
+[class*="bg-[#52370f]"],
+[class*="bg-[#52722b]"],
+[class*="bg-[#5a3810]"],
+[class*="bg-[#5c4412]"],
+[class*="bg-[#724715]"],
+[class*="bg-[#8ea476]"],
+[class*="bg-[#8fa476]"],
+[class*="bg-[#a1b87a]"],
+[class*="bg-[#a7bd84]"],
+[class*="bg-[#bce388]"],
+[class*="bg-[#c6892a]"],
+[class*="bg-[#d8e2be]"],
+[class*="bg-[#e6eccf]"],
+[class*="bg-[#f0f4e6]"],
+[class*="bg-[#f6f8f0]"],
+[class*="bg-[#fcfdfa]"] {
+  background-color: var(--surface-elevated) !important;
+}
+
+/* 5. Acentos de fondo (Botones de acción, chips destacados) */
+[class*="bg-[#688a28]"],
+[class*="bg-[#7ba72f]"],
+[class*="bg-[#7da72f]"],
+[class*="bg-[#7ea830]"],
+[class*="bg-[#829961]"],
+[class*="bg-[#8eb738]"],
+[class*="bg-[#9ec835]"],
+[class*="bg-[#b0dc3e]"],
+[class*="bg-[#b8df47]"],
+[class*="bg-[#c9ef4c]"],
+[class*="bg-[#c9ef5a]"] {
+  background-color: var(--accent-primary) !important;
+  color: #ffffff !important;
+}
+
+/* 6. Bordes sutiles de cuadros y tarjetas */
+[class*="border-[#1c2813]"],
+[class*="border-[#1e2a14]"],
+[class*="border-[#1e2c12]"],
+[class*="border-[#1e2c13]"],
+[class*="border-[#1f2b15]"],
+[class*="border-[#1f2c13]"],
+[class*="border-[#1f2d14]"],
+[class*="border-[#1f2e14]"],
+[class*="border-[#202d15]"],
+[class*="border-[#202f14]"],
+[class*="border-[#212d16]"],
+[class*="border-[#213014]"],
+[class*="border-[#222e16]"],
+[class*="border-[#222e1a]"],
+[class*="border-[#223115]"],
+[class*="border-[#223116]"],
+[class*="border-[#224854]"],
+[class*="border-[#233116]"],
+[class*="border-[#233117]"],
+[class*="border-[#233315]"],
+[class*="border-[#233316]"],
+[class*="border-[#243316]"],
+[class*="border-[#243317]"],
+[class*="border-[#244248]"],
+[class*="border-[#253318]"],
+[class*="border-[#253516]"],
+[class*="border-[#253616]"],
+[class*="border-[#253617]"],
+[class*="border-[#263517]"],
+[class*="border-[#263518]"],
+[class*="border-[#263519]"],
+[class*="border-[#263717]"],
+[class*="border-[#263818]"],
+[class*="border-[#264e2d]"],
+[class*="border-[#273618]"],
+[class*="border-[#27361a]"],
+[class*="border-[#273718]"],
+[class*="border-[#273819]"],
+[class*="border-[#283718]"],
+[class*="border-[#28371a]"],
+[class*="border-[#283818]"],
+[class*="border-[#283918]"],
+[class*="border-[#283a19]"],
+[class*="border-[#29371a]"],
+[class*="border-[#293819]"],
+[class*="border-[#29391a]"],
+[class*="border-[#293a19]"],
+[class*="border-[#293b1a]"],
+[class*="border-[#2a381c]"],
+[class*="border-[#2a3a19]"],
+[class*="border-[#2a3a1b]"],
+[class*="border-[#2a3a1d]"],
+[class*="border-[#2a3c1a]"],
+[class*="border-[#2b3523]"],
+[class*="border-[#2b3a1a]"],
+[class*="border-[#2b3a1c]"],
+[class*="border-[#2b3a1d]"],
+[class*="border-[#2b3b1a]"],
+[class*="border-[#2b3b1c]"],
+[class*="border-[#2b3c1b]"],
+[class*="border-[#2b3d1b]"],
+[class*="border-[#2b595e]"],
+[class*="border-[#2c3d1b]"],
+[class*="border-[#2c3d1d]"],
+[class*="border-[#2d3a1d]"],
+[class*="border-[#2d3c1d]"],
+[class*="border-[#2d3d1c]"],
+[class*="border-[#2d3e1b]"],
+[class*="border-[#2d3e1c]"],
+[class*="border-[#2d3e1d]"],
+[class*="border-[#2d3f1c]"],
+[class*="border-[#2d3f1d]"],
+[class*="border-[#2d401e]"],
+[class*="border-[#2e3e1c]"],
+[class*="border-[#2e3e1d]"],
+[class*="border-[#2e3e1f]"],
+[class*="border-[#2e401b]"],
+[class*="border-[#2e401d]"],
+[class*="border-[#2e401e]"],
+[class*="border-[#2f3f1e]"],
+[class*="border-[#2f401d]"],
+[class*="border-[#2f401e]"],
+[class*="border-[#2f401f]"],
+[class*="border-[#2f421d]"],
+[class*="border-[#2f421e]"],
+[class*="border-[#2f421f]"],
+[class*="border-[#2f431f]"],
+[class*="border-[#2f494f]"],
+[class*="border-[#30411f]"],
+[class*="border-[#304121]"],
+[class*="border-[#30431d]"],
+[class*="border-[#30431f]"],
+[class*="border-[#30441c]"],
+[class*="border-[#31421f]"],
+[class*="border-[#31431e]"],
+[class*="border-[#314320]"],
+[class*="border-[#32451f]"],
+[class*="border-[#324520]"],
+[class*="border-[#324522]"],
+[class*="border-[#33383f]"],
+[class*="border-[#33441f]"],
+[class*="border-[#33461f]"],
+[class*="border-[#334620]"],
+[class*="border-[#334621]"],
+[class*="border-[#33471e]"],
+[class*="border-[#33471f]"],
+[class*="border-[#334720]"],
+[class*="border-[#344621]"],
+[class*="border-[#344721]"],
+[class*="border-[#344722]"],
+[class*="border-[#344820]"],
+[class*="border-[#344821]"],
+[class*="border-[#344a1e]"],
+[class*="border-[#344b1e]"],
+[class*="border-[#354722]"],
+[class*="border-[#354820]"],
+[class*="border-[#354821]"],
+[class*="border-[#354822]"],
+[class*="border-[#356d25]"],
+[class*="border-[#364921]"],
+[class*="border-[#364922]"],
+[class*="border-[#364923]"],
+[class*="border-[#364b22]"],
+[class*="border-[#374923]"],
+[class*="border-[#374924]"],
+[class*="border-[#374a23]"],
+[class*="border-[#374b24]"],
+[class*="border-[#374c22]"],
+[class*="border-[#374c24]"],
+[class*="border-[#374e22]"],
+[class*="border-[#384828]"],
+[class*="border-[#384a24]"],
+[class*="border-[#384c23]"],
+[class*="border-[#384c24]"],
+[class*="border-[#384c25]"],
+[class*="border-[#384e23]"],
+[class*="border-[#384e24]"],
+[class*="border-[#384f23]"],
+[class*="border-[#385f22]"],
+[class*="border-[#394d23]"],
+[class*="border-[#394d25]"],
+[class*="border-[#394e24]"],
+[class*="border-[#394f23]"],
+[class*="border-[#394f24]"],
+[class*="border-[#395021]"],
+[class*="border-[#3a4d26]"],
+[class*="border-[#3a4e25]"],
+[class*="border-[#3a4f25]"],
+[class*="border-[#3a5024]"],
+[class*="border-[#3a5223]"],
+[class*="border-[#3a5225]"],
+[class*="border-[#3b4c27]"],
+[class*="border-[#3b4d24]"],
+[class*="border-[#3b4e24]"],
+[class*="border-[#3b4e25]"],
+[class*="border-[#3b4e28]"],
+[class*="border-[#3b4f26]"],
+[class*="border-[#3b5025]"],
+[class*="border-[#3b5027]"],
+[class*="border-[#3b5125]"],
+[class*="border-[#3b5224]"],
+[class*="border-[#3b5226]"],
+[class*="border-[#3b5522]"],
+[class*="border-[#3b5523]"],
+[class*="border-[#3b5d24]"],
+[class*="border-[#3c5025]"],
+[class*="border-[#3c5026]"],
+[class*="border-[#3c5126]"],
+[class*="border-[#3c5324]"],
+[class*="border-[#3d5226]"],
+[class*="border-[#3d5324]"],
+[class*="border-[#3d5327]"],
+[class*="border-[#3e2e22]"],
+[class*="border-[#3e4f2b]"],
+[class*="border-[#3e5326]"],
+[class*="border-[#3e5327]"],
+[class*="border-[#3e5328]"],
+[class*="border-[#3e5427]"],
+[class*="border-[#3e5527]"],
+[class*="border-[#3e5623]"],
+[class*="border-[#3e5624]"],
+[class*="border-[#3e5625]"],
+[class*="border-[#3e5626]"],
+[class*="border-[#3e5926]"],
+[class*="border-[#3e5927]"],
+[class*="border-[#3f2c12]"],
+[class*="border-[#3f5728]"],
+[class*="border-[#3f5729]"],
+[class*="border-[#3f5829]"],
+[class*="border-[#405429]"],
+[class*="border-[#405626]"],
+[class*="border-[#405627]"],
+[class*="border-[#405a27]"],
+[class*="border-[#406123]"],
+[class*="border-[#415629]"],
+[class*="border-[#415827]"],
+[class*="border-[#415928]"],
+[class*="border-[#425e27]"],
+[class*="border-[#427124]"],
+[class*="border-[#43592a]"],
+[class*="border-[#435a29]"],
+[class*="border-[#435b29]"],
+[class*="border-[#435d27]"],
+[class*="border-[#435d2a]"],
+[class*="border-[#435e23]"],
+[class*="border-[#435e27]"],
+[class*="border-[#435e29]"],
+[class*="border-[#445a2c]"],
+[class*="border-[#445b2a]"],
+[class*="border-[#445b2b]"],
+[class*="border-[#445d2a]"],
+[class*="border-[#445e27]"],
+[class*="border-[#445e28]"],
+[class*="border-[#445f28]"],
+[class*="border-[#446029]"],
+[class*="border-[#446127]"],
+[class*="border-[#446227]"],
+[class*="border-[#446627]"],
+[class*="border-[#455b2e]"],
+[class*="border-[#45602a]"],
+[class*="border-[#456329]"],
+[class*="border-[#465e2e]"],
+[class*="border-[#466526]"],
+[class*="border-[#47602d]"],
+[class*="border-[#47622b]"],
+[class*="border-[#47632a]"],
+[class*="border-[#476629]"],
+[class*="border-[#484224]"],
+[class*="border-[#48632a]"],
+[class*="border-[#48632c]"],
+[class*="border-[#486629]"],
+[class*="border-[#486b25]"],
+[class*="border-[#486b2b]"],
+[class*="border-[#49632d]"],
+[class*="border-[#49652c]"],
+[class*="border-[#496626]"],
+[class*="border-[#4a642a]"],
+[class*="border-[#4a642e]"],
+[class*="border-[#4a672d]"],
+[class*="border-[#4a6b28]"],
+[class*="border-[#4a6b29]"],
+[class*="border-[#4b662d]"],
+[class*="border-[#4b6630]"],
+[class*="border-[#4b6a2e]"],
+[class*="border-[#4b7a2a]"],
+[class*="border-[#4c692d]"],
+[class*="border-[#4d6b2b]"],
+[class*="border-[#4d6b2c]"],
+[class*="border-[#4d6b2f]"],
+[class*="border-[#4d6c29]"],
+[class*="border-[#4d6d29]"],
+[class*="border-[#4d7928]"],
+[class*="border-[#4e6b2c]"],
+[class*="border-[#4f6b32]"],
+[class*="border-[#4f6d30]"],
+[class*="border-[#4f712a]"],
+[class*="border-[#4f722c]"],
+[class*="border-[#50702d]"],
+[class*="border-[#50702f]"],
+[class*="border-[#50722e]"],
+[class*="border-[#50742f]"],
+[class*="border-[#52321c]"],
+[class*="border-[#526d33]"],
+[class*="border-[#526f33]"],
+[class*="border-[#527027]"],
+[class*="border-[#527030]"],
+[class*="border-[#527230]"],
+[class*="border-[#527328]"],
+[class*="border-[#527329]"],
+[class*="border-[#52732a]"],
+[class*="border-[#527428]"],
+[class*="border-[#527429]"],
+[class*="border-[#52742d]"],
+[class*="border-[#527532]"],
+[class*="border-[#52772e]"],
+[class*="border-[#52792c]"],
+[class*="border-[#527e2b]"],
+[class*="border-[#52802f]"],
+[class*="border-[#537728]"],
+[class*="border-[#543b18]"],
+[class*="border-[#547334]"],
+[class*="border-[#556e36]"],
+[class*="border-[#557633]"],
+[class*="border-[#557827]"],
+[class*="border-[#557b2c]"],
+[class*="border-[#587532]"],
+[class*="border-[#587637]"],
+[class*="border-[#587836]"],
+[class*="border-[#5a7b37]"],
+[class*="border-[#5a7c33]"],
+[class*="border-[#5a7d34]"],
+[class*="border-[#5a7f34]"],
+[class*="border-[#5a8037]"],
+[class*="border-[#5a8729]"],
+[class*="border-[#5b802a]"],
+[class*="border-[#5b8032]"],
+[class*="border-[#5d8031]"],
+[class*="border-[#5d8035]"],
+[class*="border-[#5d8236]"],
+[class*="border-[#5d8334]"],
+[class*="border-[#5d8335]"],
+[class*="border-[#5d8731]"],
+[class*="border-[#5e7e34]"],
+[class*="border-[#696127]"],
+[class*="border-[#6f4211]"],
+[class*="border-[#713928]"],
+[class*="border-[#734812]"],
+[class*="border-[#785416]"],
+[class*="border-[#7a3922]"],
+[class*="border-[#7d5016]"],
+[class*="border-[#8a681c]"],
+[class*="border-[#8f7431]"],
+[class*="border-[#9b6320]"],
+[class*="border-[#9b721e]"],
+[class*="border-[#d8f572]"] {
+  border-color: var(--border-subtle) !important;
+}
+
+/* 7. Bordes activos / destacados */
+[class*="border-[#688a28]"],
+[class*="border-[#6b8b3e]"],
+[class*="border-[#6b913d]"],
+[class*="border-[#6b913e]"],
+[class*="border-[#6b922a]"],
+[class*="border-[#6b9332]"],
+[class*="border-[#6b942a]"],
+[class*="border-[#6b9d33]"],
+[class*="border-[#6e8f2a]"],
+[class*="border-[#739b33]"],
+[class*="border-[#7a9d4a]"],
+[class*="border-[#7ba72f]"],
+[class*="border-[#7da830]"],
+[class*="border-[#7ea830]"],
+[class*="border-[#89ba34]"],
+[class*="border-[#8cb83a]"],
+[class*="border-[#8eb738]"],
+[class*="border-[#9ec835]"],
+[class*="border-[#9fd342]"],
+[class*="border-[#a2cb3c]"],
+[class*="border-[#b8df47]"] {
+  border-color: var(--accent-primary) !important;
+}
+
+/* 8. Textos de acento dinámico */
+[class*="text-[#71855d]"],
+[class*="text-[#71855e]"],
+[class*="text-[#718563]"],
+[class*="text-[#72b737]"],
+[class*="text-[#73855e]"],
+[class*="text-[#73885d]"],
+[class*="text-[#768a62]"],
+[class*="text-[#778d61]"],
+[class*="text-[#788e63]"],
+[class*="text-[#789660]"],
+[class*="text-[#7d995c]"],
+[class*="text-[#7d9b5c]"],
+[class*="text-[#7ea830]"],
+[class*="text-[#88b030]"],
+[class*="text-[#88cb30]"],
+[class*="text-[#8db845]"],
+[class*="text-[#8dd434]"],
+[class*="text-[#90ba51]"],
+[class*="text-[#93dc37]"],
+[class*="text-[#94dd38]"],
+[class*="text-[#95be5d]"],
+[class*="text-[#98de3e]"],
+[class*="text-[#9cc440]"],
+[class*="text-[#9ec835]"],
+[class*="text-[#a1e549]"],
+[class*="text-[#a2cb3c]"],
+[class*="text-[#a2cb52]"],
+[class*="text-[#a2cb54]"],
+[class*="text-[#a3d04e]"],
+[class*="text-[#a4d24f]"],
+[class*="text-[#a4df54]"],
+[class*="text-[#a4e15d]"],
+[class*="text-[#a5d24e]"],
+[class*="text-[#a6c757]"],
+[class*="text-[#a7d452]"],
+[class*="text-[#a8d356]"],
+[class*="text-[#a9d752]"],
+[class*="text-[#afd752]"],
+[class*="text-[#b2dd4f]"],
+[class*="text-[#b4df4d]"],
+[class*="text-[#b8df47]"],
+[class*="text-[#bbf348]"],
+[class*="text-[#bce75d]"],
+[class*="text-[#c0e862]"],
+[class*="text-[#c3ee5f]"],
+[class*="text-[#c5f057]"],
+[class*="text-[#ccf85d]"],
+[class*="text-[#d2ff4d]"],
+[class*="text-[#e2b947]"],
+[class*="text-[#eafb35]"],
+[class*="text-[#fcd34d]"] {
+  color: var(--accent-primary) !important;
+}
+
+/* 9. Textos principales */
+[class*="text-[#a7f3d0]"],
+[class*="text-[#c3dee6]"],
+[class*="text-[#c6ed74]"],
+[class*="text-[#c7e997]"],
+[class*="text-[#c7e9bc]"],
+[class*="text-[#c7f465]"],
+[class*="text-[#c8f26a]"],
+[class*="text-[#c9e491]"],
+[class*="text-[#c9e884]"],
+[class*="text-[#c9e89b]"],
+[class*="text-[#c9eb92]"],
+[class*="text-[#cbdcb5]"],
+[class*="text-[#cbe8a2]"],
+[class*="text-[#cbf46e]"],
+[class*="text-[#cce0b8]"],
+[class*="text-[#cce5a6]"],
+[class*="text-[#cce8a3]"],
+[class*="text-[#ccf56f]"],
+[class*="text-[#cde2b6]"],
+[class*="text-[#ceeaa0]"],
+[class*="text-[#cfeaa4]"],
+[class*="text-[#cfec91]"],
+[class*="text-[#d0f675]"],
+[class*="text-[#d2f778]"],
+[class*="text-[#d3e2c3]"],
+[class*="text-[#d3e3be]"],
+[class*="text-[#d3e5b8]"],
+[class*="text-[#d3e5be]"],
+[class*="text-[#d3e5bf]"],
+[class*="text-[#d3e89b]"],
+[class*="text-[#d3f46f]"],
+[class*="text-[#d3f582]"],
+[class*="text-[#d3f587]"],
+[class*="text-[#d4e1c7]"],
+[class*="text-[#d4e4c2]"],
+[class*="text-[#d4e5be]"],
+[class*="text-[#d4e899]"],
+[class*="text-[#d4e8b8]"],
+[class*="text-[#d4f092]"],
+[class*="text-[#d4f57b]"],
+[class*="text-[#d4f66a]"],
+[class*="text-[#d4f86d]"],
+[class*="text-[#d5ed97]"],
+[class*="text-[#d6e7c0]"],
+[class*="text-[#d6e7c1]"],
+[class*="text-[#d6eb9a]"],
+[class*="text-[#d6ebd0]"],
+[class*="text-[#d6ec99]"],
+[class*="text-[#d6ec9a]"],
+[class*="text-[#d6ee9b]"],
+[class*="text-[#d6f28e]"],
+[class*="text-[#d7e6c4]"],
+[class*="text-[#d8e5cb]"],
+[class*="text-[#d8e7c4]"],
+[class*="text-[#d8e874]"],
+[class*="text-[#d8e8bf]"],
+[class*="text-[#d8e8c8]"],
+[class*="text-[#d8ea9c]"],
+[class*="text-[#d8eaad]"],
+[class*="text-[#d8f58b]"],
+[class*="text-[#d8f5a2]"],
+[class*="text-[#d8f87b]"],
+[class*="text-[#d9efa1]"],
+[class*="text-[#dae8cb]"],
+[class*="text-[#dbe7ce]"],
+[class*="text-[#dbe8cb]"],
+[class*="text-[#dbeeaa]"],
+[class*="text-[#dbeef2]"],
+[class*="text-[#dce7ce]"],
+[class*="text-[#dce8ce]"],
+[class*="text-[#dcf88a]"],
+[class*="text-[#ddff73]"],
+[class*="text-[#ddff75]"],
+[class*="text-[#ddff78]"],
+[class*="text-[#e0ebd3]"],
+[class*="text-[#e0ecd2]"],
+[class*="text-[#e0ecd4]"],
+[class*="text-[#e0ecdc]"],
+[class*="text-[#e0f19c]"],
+[class*="text-[#e0fa7f]"],
+[class*="text-[#e1ecd4]"],
+[class*="text-[#e1ecd5]"],
+[class*="text-[#e1f5c6]"],
+[class*="text-[#e2ebd3]"],
+[class*="text-[#e2ecd5]"],
+[class*="text-[#e2edce]"],
+[class*="text-[#e2edd8]"],
+[class*="text-[#e2f0d0]"],
+[class*="text-[#e2f0d4]"],
+[class*="text-[#e3f0d4]"],
+[class*="text-[#e4f6cb]"],
+[class*="text-[#e4ff88]"],
+[class*="text-[#e5ecd6]"],
+[class*="text-[#e5f0d8]"],
+[class*="text-[#e6f4d0]"],
+[class*="text-[#e8f7d0]"],
+[class*="text-[#e8f8ce]"],
+[class*="text-[#eaf5dd]"],
+[class*="text-[#ebd5c5]"],
+[class*="text-[#ecfdf5]"],
+[class*="text-[#eef6df]"],
+[class*="text-[#eef6e1]"],
+[class*="text-[#eef6e4]"],
+[class*="text-[#eef8e0]"],
+[class*="text-[#eff8e3]"],
+[class*="text-[#f0f6e8]"],
+[class*="text-[#f0f7e6]"],
+[class*="text-[#f0f8e5]"],
+[class*="text-[#f0f9e8]"],
+[class*="text-[#f0f9ff]"],
+[class*="text-[#f1f8e9]"],
+[class*="text-[#f1fadb]"],
+[class*="text-[#f2f7ec]"],
+[class*="text-[#f2fcdb]"],
+[class*="text-[#f3f9eb]"],
+[class*="text-[#f4dcb5]"],
+[class*="text-[#f4fde6]"],
+[class*="text-[#fbe1a1]"],
+[class*="text-[#fcffff]"],
+[class*="text-[#fecaca]"],
+[class*="text-[#ffd188]"],
+[class*="text-[#ffd48f]"] {
+  color: var(--text-primary) !important;
+}
+
+/* 10. Textos secundarios */
+[class*="text-[#6ee7b7]"],
+[class*="text-[#71e8df]"],
+[class*="text-[#7ea064]"],
+[class*="text-[#839e65]"],
+[class*="text-[#849a6f]"],
+[class*="text-[#869770]"],
+[class*="text-[#869871]"],
+[class*="text-[#869970]"],
+[class*="text-[#86a16c]"],
+[class*="text-[#86a269]"],
+[class*="text-[#86a566]"],
+[class*="text-[#86a56e]"],
+[class*="text-[#86efac]"],
+[class*="text-[#88a36b]"],
+[class*="text-[#899f71]"],
+[class*="text-[#8a9a80]"],
+[class*="text-[#8a9e73]"],
+[class*="text-[#8a9f73]"],
+[class*="text-[#8aa073]"],
+[class*="text-[#8aa56e]"],
+[class*="text-[#8aa56f]"],
+[class*="text-[#8aa86a]"],
+[class*="text-[#8ba075]"],
+[class*="text-[#8ba274]"],
+[class*="text-[#8ba56d]"],
+[class*="text-[#8ca173]"],
+[class*="text-[#8ca177]"],
+[class*="text-[#8ca17c]"],
+[class*="text-[#8ca375]"],
+[class*="text-[#8da075]"],
+[class*="text-[#8da277]"],
+[class*="text-[#8da670]"],
+[class*="text-[#8da771]"],
+[class*="text-[#8da86e]"],
+[class*="text-[#8e9f78]"],
+[class*="text-[#8ea375]"],
+[class*="text-[#8ea380]"],
+[class*="text-[#8ea476]"],
+[class*="text-[#8ea477]"],
+[class*="text-[#8ea478]"],
+[class*="text-[#8ea670]"],
+[class*="text-[#8ea775]"],
+[class*="text-[#8ea870]"],
+[class*="text-[#8fa376]"],
+[class*="text-[#8fa476]"],
+[class*="text-[#8fa577]"],
+[class*="text-[#8fa676]"],
+[class*="text-[#8fa776]"],
+[class*="text-[#8fa878]"],
+[class*="text-[#93a47c]"],
+[class*="text-[#93a77b]"],
+[class*="text-[#93ae77]"],
+[class*="text-[#94ad78]"],
+[class*="text-[#94b074]"],
+[class*="text-[#97bb6e]"],
+[class*="text-[#98ab82]"],
+[class*="text-[#9bb084]"],
+[class*="text-[#9bb08e]"],
+[class*="text-[#9bb08f]"],
+[class*="text-[#9bb382]"],
+[class*="text-[#9cb086]"],
+[class*="text-[#9cb17b]"],
+[class*="text-[#9cb97d]"],
+[class*="text-[#9db391]"],
+[class*="text-[#9db784]"],
+[class*="text-[#9eb286]"],
+[class*="text-[#9eb288]"],
+[class*="text-[#9eb486]"],
+[class*="text-[#9eb584]"],
+[class*="text-[#9eb586]"],
+[class*="text-[#9eb590]"],
+[class*="text-[#9eb786]"],
+[class*="text-[#9ebb73]"],
+[class*="text-[#9fb392]"],
+[class*="text-[#a0b28c]"],
+[class*="text-[#a2b58d]"],
+[class*="text-[#a2b88b]"],
+[class*="text-[#a3b19b]"],
+[class*="text-[#a3b890]"],
+[class*="text-[#a3c965]"],
+[class*="text-[#a4b491]"],
+[class*="text-[#a4b78f]"],
+[class*="text-[#a4b88f]"],
+[class*="text-[#a4b890]"],
+[class*="text-[#a4ba8c]"],
+[class*="text-[#a4bb8e]"],
+[class*="text-[#a4c776]"],
+[class*="text-[#a5bc8d]"],
+[class*="text-[#a5bd8f]"],
+[class*="text-[#a5c777]"],
+[class*="text-[#a6ba90]"],
+[class*="text-[#a6bca0]"],
+[class*="text-[#a6bf8f]"],
+[class*="text-[#a7bd84]"],
+[class*="text-[#a7c091]"],
+[class*="text-[#a8bc94]"],
+[class*="text-[#a99484]"],
+[class*="text-[#a9bc94]"],
+[class*="text-[#a9cf67]"],
+[class*="text-[#acc29f]"],
+[class*="text-[#b0c3a5]"],
+[class*="text-[#b0c4a4]"],
+[class*="text-[#b0c897]"],
+[class*="text-[#b0cca0]"],
+[class*="text-[#b2c69e]"],
+[class*="text-[#b2cd88]"],
+[class*="text-[#b4c79f]"],
+[class*="text-[#b4c896]"],
+[class*="text-[#b4d485]"],
+[class*="text-[#b5c5a2]"],
+[class*="text-[#b6caa2]"],
+[class*="text-[#b6d498]"],
+[class*="text-[#b8c6a5]"],
+[class*="text-[#b8cc9f]"],
+[class*="text-[#b9cbb0]"],
+[class*="text-[#bad79a]"],
+[class*="text-[#bde089]"],
+[class*="text-[#bfe07d]"],
+[class*="text-[#c0d4ad]"],
+[class*="text-[#c0e86b]"],
+[class*="text-[#c1d9a5]"],
+[class*="text-[#c2d4ad]"],
+[class*="text-[#c2d6a4]"],
+[class*="text-[#c2ec68]"],
+[class*="text-[#c3deb0]"],
+[class*="text-[#c4d6b0]"],
+[class*="text-[#c4d6b2]"],
+[class*="text-[#c4d7b2]"],
+[class*="text-[#c4e09f]"],
+[class*="text-[#c4e398]"],
+[class*="text-[#c4eb6e]"],
+[class*="text-[#c6d6b5]"],
+[class*="text-[#c6d7b2]"],
+[class*="text-[#c7d9b4]"],
+[class*="text-[#c9d8b7]"],
+[class*="text-[#cadbb8]"],
+[class*="text-[#cbdab6]"],
+[class*="text-[#cca0a0]"],
+[class*="text-[#d1b17b]"],
+[class*="text-[#d4af7e]"],
+[class*="text-[#d6cd7e]"],
+[class*="text-[#dca084]"],
+[class*="text-[#e0caa2]"],
+[class*="text-[#e59635]"],
+[class*="text-[#e89078]"],
+[class*="text-[#f1a8a8]"],
+[class*="text-[#f1b3b3]"],
+[class*="text-[#f2a83b]"],
+[class*="text-[#f2be6b]"],
+[class*="text-[#f49c9c]"],
+[class*="text-[#fca05f]"],
+[class*="text-[#fca5a5]"] {
+  color: var(--text-secondary) !important;
+}
+
+/* 11. Textos atenuados / subtítulos */
+[class*="text-[#0e1409]"],
+[class*="text-[#0f150a]"],
+[class*="text-[#10170a]"],
+[class*="text-[#11170b]"],
+[class*="text-[#11180c]"],
+[class*="text-[#111a0c]"],
+[class*="text-[#12160f]"],
+[class*="text-[#12180c]"],
+[class*="text-[#12190c]"],
+[class*="text-[#121c0b]"],
+[class*="text-[#1b2611]"],
+[class*="text-[#1c1606]"],
+[class*="text-[#202c14]"],
+[class*="text-[#2a351f]"],
+[class*="text-[#2b3a1a]"],
+[class*="text-[#384828]"],
+[class*="text-[#394828]"],
+[class*="text-[#4a5f32]"],
+[class*="text-[#526442]"],
+[class*="text-[#52663d]"],
+[class*="text-[#576b3f]"],
+[class*="text-[#586f41]"],
+[class*="text-[#5a8037]"],
+[class*="text-[#5d7345]"],
+[class*="text-[#61744d]"],
+[class*="text-[#62754c]"],
+[class*="text-[#647852]"],
+[class*="text-[#667854]"],
+[class*="text-[#6b7c5b]"],
+[class*="text-[#6c7f59]"],
+[class*="text-[#6c805a]"],
+[class*="text-[#6d805c]"],
+[class*="text-[#6d8258]"],
+[class*="text-[#718063]"],
+[class*="text-[#738865]"],
+[class*="text-[#778d69]"],
+[class*="text-[#788e6a]"],
+[class*="text-[#7a8f65]"],
+[class*="text-[#7b8f67]"],
+[class*="text-[#7b9067]"],
+[class*="text-[#7b9167]"],
+[class*="text-[#7d9066]"],
+[class*="text-[#7d9366]"],
+[class*="text-[#7e9368]"],
+[class*="text-[#7f9467]"],
+[class*="text-[#b87661]"] {
+  color: var(--text-muted) !important;
+}
+
+/* 12. Estados de hover sobre cuadros y botones */
+[class*="hover:bg-[#1"]:hover,
+[class*="hover:bg-[#2"]:hover,
+[class*="hover:bg-[#3"]:hover,
+[class*="hover:bg-[#4"]:hover {
+  background-color: var(--surface-base) !important;
+}
+
+/* 13. Sombras sobrias */
+[class*="shadow-2xl"],
+[class*="shadow-xl"] {
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ==========================================================================
+   DELINEADO NARANJA NEÓN DE TRAZO FINO PARA BOTONES Y CUADROS DE EXPANSIÓN
+   ========================================================================== */
+
+/* Botones de expansión / colapso / ver más / desplegar */
+.neon-orange-expand,
+button[id*="collapse"],
+button[id*="expand"],
+button[id*="toggle"],
+button[aria-expanded],
+button[id="toggle-dispatch-collapse-btn"],
+button[id="level-selector-btn"],
+[data-expand-trigger="true"],
+.expand-button-neon {
+  border: 1px solid #ff6a00 !important;
+  box-shadow: 0 0 0 1px rgba(255, 106, 0, 0.35), 0 0 8px rgba(255, 106, 0, 0.25) !important;
+}
+
+/* Hover activo sobre botones de expansión */
+.neon-orange-expand:hover,
+button[id*="collapse"]:hover,
+button[id*="expand"]:hover,
+button[id*="toggle"]:hover,
+button[aria-expanded]:hover,
+button[id="toggle-dispatch-collapse-btn"]:hover,
+button[id="level-selector-btn"]:hover,
+[data-expand-trigger="true"]:hover,
+.expand-button-neon:hover {
+  border-color: #ff8533 !important;
+  box-shadow: 0 0 0 1px #ff6a00, 0 0 12px rgba(255, 106, 0, 0.45) !important;
+}
+
+/* Cuadros, paneles y contenedores expandidos */
+.neon-orange-box,
+[data-expanded-container="true"],
+.expanded-card-neon {
+  border: 1px solid #ff6a00 !important;
+  box-shadow: 0 0 0 1px rgba(255, 106, 0, 0.25), 0 0 10px rgba(255, 106, 0, 0.15) !important;
+}
+
